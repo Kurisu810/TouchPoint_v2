@@ -1,0 +1,2 @@
+C:\Users\czy01\Desktop\School\UCLA\Current\ECE209 AS HCI\TouchPoint_v2\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\czy01\Desktop\School\UCLA\Current\ECE209 AS HCI\TouchPoint_v2\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
