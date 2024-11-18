@@ -53,8 +53,3 @@ MonoBehaviour:
     - _mode: 1
       _feature: 1
       _state: 3
-  _thumbFeatureStates: 
-  _indexFeatureStates: 
-  _middleFeatureStates: 
-  _ringFeatureStates: 
-  _pinkyFeatureStates: 

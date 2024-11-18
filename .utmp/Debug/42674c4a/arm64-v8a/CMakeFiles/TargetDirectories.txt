@@ -1,0 +1,5 @@
+C:/Users/czy01/Desktop/School/UCLA/Current/ECE209 AS HCI/TouchPoint_v2/.utmp/Debug/42674c4a/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/czy01/Desktop/School/UCLA/Current/ECE209 AS HCI/TouchPoint_v2/.utmp/Debug/42674c4a/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/czy01/Desktop/School/UCLA/Current/ECE209 AS HCI/TouchPoint_v2/.utmp/Debug/42674c4a/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/czy01/Desktop/School/UCLA/Current/ECE209 AS HCI/TouchPoint_v2/.utmp/Debug/42674c4a/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/czy01/Desktop/School/UCLA/Current/ECE209 AS HCI/TouchPoint_v2/.utmp/Debug/42674c4a/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
