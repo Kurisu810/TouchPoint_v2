@@ -1,0 +1,5 @@
+# Ignore Unity files and caches
+Library/BurstCache/
+Library/PackageCache/
+Library/ShaderCache/
+Library/StateCache/
