@@ -5,7 +5,7 @@ public class DebugTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Logger.Instance.LogInfo("Test start");
+        Logger.Instance.LogInfo("Test");
     }
 
     // Update is called once per frame
