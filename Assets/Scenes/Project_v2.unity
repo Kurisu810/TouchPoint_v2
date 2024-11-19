@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnButton: 1
-  numberOfRadialPart: 2
+  numberOfRadialPart: 6
   radialPartPrefab: {fileID: 1867681497520928009, guid: 073da0b90b9a5104ab5ba9b8c29c2ea3, type: 3}
   radialPartCanvas: {fileID: 744998011}
   angleBetweenPart: 10
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnButton: 1
-  numberOfRadialPart: 2
+  numberOfRadialPart: 6
   radialPartPrefab: {fileID: 1867681497520928009, guid: 073da0b90b9a5104ab5ba9b8c29c2ea3, type: 3}
   radialPartCanvas: {fileID: 1225737534}
   angleBetweenPart: 10
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnButton: 1
-  numberOfRadialPart: 2
+  numberOfRadialPart: 6
   radialPartPrefab: {fileID: 1867681497520928009, guid: 073da0b90b9a5104ab5ba9b8c29c2ea3, type: 3}
   radialPartCanvas: {fileID: 876727525}
   angleBetweenPart: 10
@@ -1530,7 +1530,7 @@ MonoBehaviour:
           m_StringArgument: Start hover
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 870482760}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProgressCircleDriver, Assembly-CSharp
         m_MethodName: OnHoverEnter
         m_Mode: 2
@@ -1557,7 +1557,7 @@ MonoBehaviour:
           m_StringArgument: End hover
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 870482760}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProgressCircleDriver, Assembly-CSharp
         m_MethodName: OnHoverExit
         m_Mode: 1
@@ -1584,7 +1584,7 @@ MonoBehaviour:
           m_StringArgument: Selected
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 870482760}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProgressCircleDriver, Assembly-CSharp
         m_MethodName: OnHoverExit
         m_Mode: 1
@@ -1887,9 +1887,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2027523185}
-  - {fileID: 870482759}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1354644688
@@ -2404,7 +2402,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2027523185}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2614,3 +2612,5 @@ SceneRoots:
   - {fileID: 506255667}
   - {fileID: 1474710891}
   - {fileID: 2064700548}
+  - {fileID: 1254118526}
+  - {fileID: 1876462170}
