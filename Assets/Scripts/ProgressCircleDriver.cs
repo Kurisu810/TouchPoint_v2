@@ -7,8 +7,8 @@ public class ProgressCircleDriver : MonoBehaviour
 {
     [SerializeField] private RectTransform circleUI; // UI element (circle image)
     [SerializeField] private Camera userCamera; // Reference to the VR headset camera
-    [SerializeField] private float displayDistance = 0.7f; // Distance from interactable
-    [SerializeField] private float selectionTime = 1f; // Time required for full progress
+    [SerializeField] private float displayDistance = 0.6f; // Distance from interactable
+    [SerializeField] private float selectionTime = 1.95f; // Time required for full progress
 
     private Coroutine fillCoroutine;
     private Vector3 headsetPosition;
