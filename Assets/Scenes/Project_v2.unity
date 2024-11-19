@@ -175,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42cc86f1e9bcd542a55b5a2f28cf6f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnButton: 1
+  spawnButton: 0
   numberOfRadialPart: 6
   radialPartPrefab: {fileID: 1867681497520928009, guid: 073da0b90b9a5104ab5ba9b8c29c2ea3, type: 3}
   radialPartCanvas: {fileID: 744998011}
@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 686fac89192452243b67866dbe8ef118, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnButton: 1
+  spawnButton: 0
   numberOfRadialPart: 3
   radialPartPrefab: {fileID: 71742674182456436, guid: af4fbbc7fa320e0428d3dc4483ff5146, type: 3}
   radialPartCanvas: {fileID: 401912249}
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713ae3726696d254f870fb4d3076d6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnButton: 1
+  spawnButton: 0
   numberOfRadialPart: 6
   radialPartPrefab: {fileID: 1867681497520928009, guid: 073da0b90b9a5104ab5ba9b8c29c2ea3, type: 3}
   radialPartCanvas: {fileID: 1225737534}
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d070a239acba7e74fabb1ed8419fa02f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnButton: 1
+  spawnButton: 0
   numberOfRadialPart: 6
   radialPartPrefab: {fileID: 1867681497520928009, guid: 073da0b90b9a5104ab5ba9b8c29c2ea3, type: 3}
   radialPartCanvas: {fileID: 876727525}
@@ -5463,6 +5463,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508307234}
+  - component: {fileID: 1508307238}
+  - component: {fileID: 1508307237}
+  - component: {fileID: 1508307236}
+  - component: {fileID: 1508307235}
   m_Layer: 0
   m_Name: RadialMenu
   m_TagString: Untagged
@@ -5490,6 +5494,218 @@ Transform:
   - {fileID: 1474710891}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1508307235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508307233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cd9780be7e512049b4d33d5c9d0ac92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeState: {fileID: 1508307237}
+--- !u!114 &1508307236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508307233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de76f7169412b8f4896235a1585d8939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _selector: {fileID: 1508307235}
+  _whenSelected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205510825}
+        m_TargetAssemblyTypeName: RadialSelection, Assembly-CSharp
+        m_MethodName: SpawnRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 71251348}
+        m_TargetAssemblyTypeName: SectorSelector, Assembly-CSharp
+        m_MethodName: SpawnRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 343846060}
+        m_TargetAssemblyTypeName: SectorSelector1, Assembly-CSharp
+        m_MethodName: SpawnRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 506255668}
+        m_TargetAssemblyTypeName: SectorSelector2, Assembly-CSharp
+        m_MethodName: SpawnRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenUnselected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205510825}
+        m_TargetAssemblyTypeName: RadialSelection, Assembly-CSharp
+        m_MethodName: HideAndTriggerSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 71251348}
+        m_TargetAssemblyTypeName: SectorSelector, Assembly-CSharp
+        m_MethodName: HideAndTriggerSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 343846060}
+        m_TargetAssemblyTypeName: SectorSelector1, Assembly-CSharp
+        m_MethodName: HideAndTriggerSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 506255668}
+        m_TargetAssemblyTypeName: SectorSelector2, Assembly-CSharp
+        m_MethodName: HideAndTriggerSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1508307237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508307233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebd5da9a8bd22243b407f1927f4965b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeStates:
+  - {fileID: 1182146032}
+  - {fileID: 1865885239}
+  _logicOperator: 2
+--- !u!114 &1508307238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508307233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2705674196dfc4da9c25fbacda72d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeState: {fileID: 1508307237}
+  _whenActivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 205510825}
+        m_TargetAssemblyTypeName: RadialSelection, Assembly-CSharp
+        m_MethodName: GetSelectedRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 71251348}
+        m_TargetAssemblyTypeName: SectorSelector, Assembly-CSharp
+        m_MethodName: GetSelectedRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 343846060}
+        m_TargetAssemblyTypeName: SectorSelector1, Assembly-CSharp
+        m_MethodName: GetSelectedRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 506255668}
+        m_TargetAssemblyTypeName: SectorSelector2, Assembly-CSharp
+        m_MethodName: GetSelectedRadialPart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _whenDeactivated:
+    m_PersistentCalls:
+      m_Calls: []
+  _emitOnFirstUpdate: 1
 --- !u!1 &1613839059
 GameObject:
   m_ObjectHideFlags: 0

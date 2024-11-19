@@ -62,12 +62,7 @@ public class RadialSelection : MonoBehaviour
         {
             HideAndTriggerSelected();
         }
-
-
-         
-
     }
-
 
     public void HideAndTriggerSelected()
     {
