@@ -1,15 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using System.Collections;
 using System.Collections.Generic;
 using Oculus.Interaction;
 
 public class RadialMenuDriver : MonoBehaviour
-{   
+{
     [Range(2, 10)]
-    public int numberOfRadialSectors = 3;
-    public GameObject radialSectorPrefab; 
+    public int numberOfRadialSectors = 4; // Ensure there are 4 sectors
+    public GameObject radialSectorPrefab;
     public Transform radialMenuCanvas;
     public float angleBetweenSector = 10;
 
@@ -45,48 +44,51 @@ public class RadialMenuDriver : MonoBehaviour
     private IActiveState PointActiveStateRight;
 
     [Range(0.01f, 0.1f)]
-    public float deadzone = 0.02f; // Deadzone threshold
+    public float deadzone = 0.02f;
+
+    [Range(0.5f, 5f)]
+    public float radialMenuDistance = 1f;
 
     public UnityEvent<int> onSectorSelection;
 
     private List<GameObject> spawnedSectors = new List<GameObject>();
     private int currentSelectedSectorIndex = -1;
-    private Vector3 startingHandPosition; // Snapshotting the position of the hand at summon
+    private Vector3 startingHandPosition;
     private bool pointAndWaitMode = false;
     private bool pointAndPinchMode = false;
-    private Transform handTransform = null; // Indicates which hand initiated the interaction; if null, then no interaction is active right now
+    private Transform handTransform = null;
+
+    public Light directionalLight; // Reference to the directional light
+    private int currentColorMode = 0; // Tracks the current color mode (0 = white, 1 = red, 2 = yellow, 3 = blue)
+    private readonly Color[] colorModes = { Color.white, Color.red, Color.yellow, Color.blue };
 
     void Awake()
     {
-        PinchActiveStateLeft  = _pinchActiveStateLeft  as IActiveState;
+        PinchActiveStateLeft = _pinchActiveStateLeft as IActiveState;
         PinchActiveStateRight = _pinchActiveStateRight as IActiveState;
 
-        TimerActiveStateLeft  = _timerActiveStateLeft  as IActiveState;
+        TimerActiveStateLeft = _timerActiveStateLeft as IActiveState;
         TimerActiveStateRight = _timerActiveStateRight as IActiveState;
 
-        PointActiveStateLeft  = _pointActiveStateLeft  as IActiveState;
+        PointActiveStateLeft = _pointActiveStateLeft as IActiveState;
         PointActiveStateRight = _pointActiveStateRight as IActiveState;
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Select active mode and hand
         if (handTransform == null && !pointAndWaitMode && !pointAndPinchMode)
         {
-            // Left hand point and pinch mode
-            if (PinchActiveStateLeft.Active) {
+            if (PinchActiveStateLeft.Active)
+            {
                 handTransform = leftHandTransform;
                 pointAndPinchMode = true;
             }
-
-            // Right hand point and pinch mode
-            else if (PinchActiveStateRight.Active) {
+            else if (PinchActiveStateRight.Active)
+            {
                 handTransform = rightHandTransform;
                 pointAndPinchMode = true;
             }
-
-            // Left hand point and wait active
             else if (TimerActiveStateLeft.Active && PointActiveStateLeft.Active)
             {
                 handTransform = leftHandTransform;
@@ -94,8 +96,6 @@ public class RadialMenuDriver : MonoBehaviour
                 timerRayInteractorRight.SetActive(false);
                 pointAndWaitMode = true;
             }
-
-            // Right hand point and wait active
             else if (TimerActiveStateRight.Active && PointActiveStateRight.Active)
             {
                 handTransform = rightHandTransform;
@@ -103,17 +103,14 @@ public class RadialMenuDriver : MonoBehaviour
                 timerRayInteractorRight.SetActive(false);
                 pointAndWaitMode = true;
             }
-
             else
             {
                 return;
             }
 
-            startingHandPosition = handTransform.position; // Store starting hand position
+            startingHandPosition = handTransform.position;
             SpawnRadialMenu();
         }
-
-        // Point and wait mode, left hand
         else if (handTransform == leftHandTransform && pointAndWaitMode)
         {
             if (!TimerActiveStateLeft.Active && PointActiveStateLeft.Active)
@@ -127,8 +124,6 @@ public class RadialMenuDriver : MonoBehaviour
                 HideAndTriggerSelected();
             }
         }
-
-        // Point and wait mode, right hand
         else if (handTransform == rightHandTransform && pointAndWaitMode)
         {
             if (!TimerActiveStateRight.Active && PointActiveStateRight.Active)
@@ -142,8 +137,6 @@ public class RadialMenuDriver : MonoBehaviour
                 HideAndTriggerSelected();
             }
         }
-
-        // Point and pinch mode
         else if (handTransform != null && pointAndPinchMode)
         {
             if (PinchActiveStateLeft.Active || PinchActiveStateRight.Active)
@@ -160,17 +153,14 @@ public class RadialMenuDriver : MonoBehaviour
     }
 
     public void SpawnRadialMenu()
-    {   
-        // Enable radial menu game object
+    {
         radialMenuCanvas.gameObject.SetActive(true);
 
-        // Set radial menu position and rotation to in front of the player
-        Vector3 targetPosition = centerEyeTransform.position;
-        targetPosition.z += 1; // Move the radial menu to in front of the player
+        // Set menu position at spawn time, fixed relative to centerEyeTransform
+        Vector3 targetPosition = centerEyeTransform.position + centerEyeTransform.forward * radialMenuDistance;
         radialMenuCanvas.position = targetPosition;
         radialMenuCanvas.rotation = centerEyeTransform.rotation;
 
-        // Clear spawned sectors list
         foreach (var item in spawnedSectors)
         {
             Destroy(item);
@@ -178,54 +168,42 @@ public class RadialMenuDriver : MonoBehaviour
 
         spawnedSectors.Clear();
 
-        // Spawn each radial sector
         for (int i = 0; i < numberOfRadialSectors; i++)
         {
-            // Instantiate new radial sector
             GameObject radialSector = Instantiate(radialSectorPrefab, radialMenuCanvas);
-            spawnedSectors.Add(radialSector); // Add to spawned sectors list
+            spawnedSectors.Add(radialSector);
 
-            // Compute rotation angle
-            float angle = -i * 360 / numberOfRadialSectors - angleBetweenSector/2;
+            float angle = -i * 360 / numberOfRadialSectors - angleBetweenSector / 2;
             Vector3 radialSectorEulerAngles = new Vector3(0, 0, angle);
 
-            // Configure radial sector
-            radialSector.transform.position = radialMenuCanvas.position;  // Set position to center of canvas
-            radialSector.transform.localEulerAngles = radialSectorEulerAngles;  // Set rotation angles
-            radialSector.GetComponent<Image>().fillAmount = 1 / (float) numberOfRadialSectors - (angleBetweenSector/360);  // Set fill amount
+            radialSector.transform.position = radialMenuCanvas.position;
+            radialSector.transform.localEulerAngles = radialSectorEulerAngles;
+            radialSector.GetComponent<Image>().fillAmount = 1 / (float)numberOfRadialSectors - (angleBetweenSector / 360);
         }
     }
 
     public void GetSelectedSector()
-    {   
-        // Get current hand position
+    {
         Vector3 currentHandPosition = handTransform.position;
-
-        // Get a vector from current to starting hand position
         Vector3 handPositionDelta = currentHandPosition - startingHandPosition;
-        handPositionDelta.z = 0; // Ignore Z differences
+        handPositionDelta.z = 0;
 
-        // Calculate the clock face angle from starting hand position
         float angleFrom12 = 90 - Mathf.Atan2(handPositionDelta.y, handPositionDelta.x) * Mathf.Rad2Deg;
-        if (angleFrom12 < 0) {angleFrom12 += 360;} // Translate the angle to between 0 to 360
+        if (angleFrom12 < 0) { angleFrom12 += 360; }
 
-        // Check deadzone threshold
         float XYMovementDelta = handPositionDelta.magnitude;
 
-        if (XYMovementDelta > deadzone) {
-            // Determine the selected sector
-            currentSelectedSectorIndex = (int) (numberOfRadialSectors * (angleFrom12 / 360));
+        if (XYMovementDelta > deadzone)
+        {
+            currentSelectedSectorIndex = (int)(numberOfRadialSectors * (angleFrom12 / 360));
 
             for (int i = 0; i < spawnedSectors.Count; i++)
-            {   
-                // Set the selected sector's color to yellow and slightly increase its size
+            {
                 if (i == currentSelectedSectorIndex)
                 {
                     spawnedSectors[i].GetComponent<Image>().color = Color.yellow;
                     spawnedSectors[i].transform.localScale = 1.1f * Vector3.one;
                 }
-                
-                // Reset all sectors not selected
                 else
                 {
                     spawnedSectors[i].GetComponent<Image>().color = Color.white;
@@ -233,7 +211,6 @@ public class RadialMenuDriver : MonoBehaviour
                 }
             }
         }
-
         else
         {
             currentSelectedSectorIndex = -1;
@@ -242,12 +219,35 @@ public class RadialMenuDriver : MonoBehaviour
 
     public void HideAndTriggerSelected()
     {
-        // Trigger selected radial sector
         onSectorSelection.Invoke(currentSelectedSectorIndex);
 
         Logger.Instance.LogInfo("Selected sector index = " + currentSelectedSectorIndex);
 
-        // Despawn radial menu
+        AdjustLight(currentSelectedSectorIndex);
+
         radialMenuCanvas.gameObject.SetActive(false);
+    }
+
+    private void AdjustLight(int sectorIndex)
+    {
+        switch (sectorIndex)
+        {
+            case 0: // Top-right: Switch to next color mode
+                currentColorMode = (currentColorMode + 1) % colorModes.Length;
+                directionalLight.color = colorModes[currentColorMode];
+                break;
+            case 1: // Bottom-right: Switch to previous color mode
+                currentColorMode = (currentColorMode - 1 + colorModes.Length) % colorModes.Length;
+                directionalLight.color = colorModes[currentColorMode];
+                break;
+            case 2: // Bottom-left
+                directionalLight.enabled = false;
+                break;
+            case 3: // Top-left: Disable light
+                directionalLight.enabled = true;
+                break;
+            default:
+                break;
+        }
     }
 }
