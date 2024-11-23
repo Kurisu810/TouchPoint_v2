@@ -287,7 +287,7 @@ MonoBehaviour:
   _pointActiveStateLeft: {fileID: 1624763895}
   _pointActiveStateRight: {fileID: 499474760}
   deadzone: 0.02
-  radialMenuDistance: 1
+  radialMenuDistance: 0.8
   onSectorSelection:
     m_PersistentCalls:
       m_Calls: []
@@ -4087,7 +4087,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.469, y: 1.053, z: 0.522}
-  m_LocalScale: {x: 0.56790274, y: 0.56790274, z: 0.56790274}
+  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.30000004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1430997568}
@@ -4663,7 +4663,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.439, y: 1.053, z: 0.522}
-  m_LocalScale: {x: 0.56790274, y: 0.56790274, z: 0.56790274}
+  m_LocalScale: {x: 0.30000004, y: 0.30000004, z: 0.30000004}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 955474547}
@@ -4968,6 +4968,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Interactor: {fileID: 1785119095}
   selectionTime: 2
+--- !u!1001 &1225904976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.109775886
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.078301765
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.10617985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.19844393
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.87959164
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.24258664
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00003482915
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615228490164198007, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603005670187754834, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
+      propertyPath: m_Name
+      value: Speaker2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fd7270aa12d783445a48de9488d07ddb, type: 3}
 --- !u!114 &1242045282 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2483171111766613643, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
@@ -6028,7 +6097,7 @@ MonoBehaviour:
   circleUI: {fileID: 1637271237}
   userCamera: {fileID: 1354644698}
   displayDistance: 0.6
-  selectionTime: 1.95
+  selectionTime: 1.45
 --- !u!4 &1774024736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8030197382645210610, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
@@ -6607,3 +6676,4 @@ SceneRoots:
   - {fileID: 978378351}
   - {fileID: 1693822027}
   - {fileID: 81855278}
+  - {fileID: 1225904976}
