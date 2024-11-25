@@ -19,6 +19,8 @@ public class RadialMenuDriver : MonoBehaviour
     public GameObject timerRayInteractorLeft;
     public GameObject timerRayInteractorRight;
 
+    public GameObject progressCircle;
+
     [SerializeField, Interface(typeof(IActiveState))]
     private UnityEngine.Object _pinchActiveStateLeft;
     private IActiveState PinchActiveStateLeft;
@@ -99,22 +101,21 @@ public class RadialMenuDriver : MonoBehaviour
             else if (TimerActiveStateLeft.Active && PointActiveStateLeft.Active)
             {
                 handTransform = leftHandTransform;
-                timerRayInteractorLeft.SetActive(false);
-                timerRayInteractorRight.SetActive(false);
                 pointAndWaitMode = true;
             }
             else if (TimerActiveStateRight.Active && PointActiveStateRight.Active)
             {
                 handTransform = rightHandTransform;
-                timerRayInteractorLeft.SetActive(false);
-                timerRayInteractorRight.SetActive(false);
                 pointAndWaitMode = true;
             }
             else
             {
                 return;
             }
-
+            
+            timerRayInteractorLeft.SetActive(false);
+            timerRayInteractorRight.SetActive(false);
+            progressCircle.SetActive(false);
             startingHandPosition = handTransform.position;
             SpawnRadialMenu();
         }
@@ -128,6 +129,7 @@ public class RadialMenuDriver : MonoBehaviour
             {
                 pointAndWaitMode = false;
                 handTransform = null;
+                progressCircle.SetActive(true);
                 HideAndTriggerSelected();
             }
         }
@@ -141,6 +143,7 @@ public class RadialMenuDriver : MonoBehaviour
             {
                 pointAndWaitMode = false;
                 handTransform = null;
+                progressCircle.SetActive(true);
                 HideAndTriggerSelected();
             }
         }
@@ -154,6 +157,7 @@ public class RadialMenuDriver : MonoBehaviour
             {
                 pointAndPinchMode = false;
                 handTransform = null;
+                progressCircle.SetActive(true);
                 HideAndTriggerSelected();
             }
         }

@@ -347,6 +347,7 @@ MonoBehaviour:
   centerEyeTransform: {fileID: 1354644697}
   timerRayInteractorLeft: {fileID: 407514393}
   timerRayInteractorRight: {fileID: 1323895772}
+  progressCircle: {fileID: 1702486094}
   _pinchActiveStateLeft: {fileID: 1254329113}
   _pinchActiveStateRight: {fileID: 1774024739}
   _timerActiveStateLeft: {fileID: 1785119104}
