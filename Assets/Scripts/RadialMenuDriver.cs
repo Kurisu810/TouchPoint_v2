@@ -209,12 +209,14 @@ public class RadialMenuDriver : MonoBehaviour
 
             for (int i = 0; i < spawnedSectors.Count; i++)
             {
+                // Highlight the selected sector by scaling it to 1.5 times
                 if (i == currentSelectedSectorIndex)
                 {
-                    spawnedSectors[i].transform.localScale = 1.1f * Vector3.one;
+                    spawnedSectors[i].transform.localScale = 1.5f * Vector3.one;
                 }
                 else
                 {
+                    // Reset the size of unselected sectors
                     spawnedSectors[i].transform.localScale = Vector3.one;
                 }
             }
@@ -222,6 +224,12 @@ public class RadialMenuDriver : MonoBehaviour
         else
         {
             currentSelectedSectorIndex = -1;
+
+            // Reset all sectors if nothing is selected
+            foreach (var sector in spawnedSectors)
+            {
+                sector.transform.localScale = Vector3.one;
+            }
         }
     }
 
