@@ -7021,6 +7021,8 @@ MonoBehaviour:
   userCamera: {fileID: 1354644698}
   displayDistance: 0.6
   selectionTime: 0.95
+  _pointActiveStateLeft: {fileID: 1624763895}
+  _pointActiveStateRight: {fileID: 499474760}
 --- !u!4 &1774024736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8030197382645210610, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
