@@ -47,7 +47,7 @@ public class RadialMenuDriver : MonoBehaviour
     public float deadzone = 0.02f;
 
     [Range(0.5f, 5f)]
-    public float radialMenuDistance = 1f;
+    public float radialMenuDistance = 1.2f;
 
     public UnityEvent<int> onSectorSelection;
 
@@ -221,7 +221,7 @@ public class RadialMenuDriver : MonoBehaviour
     {
         onSectorSelection.Invoke(currentSelectedSectorIndex);
 
-        Logger.Instance.LogInfo("Selected sector index = " + currentSelectedSectorIndex);
+        //Logger.Instance.LogInfo("Selected sector index = " + currentSelectedSectorIndex);
 
         AdjustLight(currentSelectedSectorIndex);
 

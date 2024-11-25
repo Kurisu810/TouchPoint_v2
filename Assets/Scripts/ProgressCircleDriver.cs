@@ -78,7 +78,8 @@ public class ProgressCircleDriver : MonoBehaviour
         }
 
         // Optional: Trigger any action when progress is complete
-        Logger.Instance.LogInfo("Selection Complete!");
+        // Logger.Instance.LogInfo("Selection Complete!");
+        
         ResetCircle();
     }
 
