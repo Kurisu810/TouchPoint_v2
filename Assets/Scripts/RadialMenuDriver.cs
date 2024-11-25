@@ -58,9 +58,16 @@ public class RadialMenuDriver : MonoBehaviour
     private bool pointAndPinchMode = false;
     private Transform handTransform = null;
 
+    public Renderer lampShadeRenderer; // Reference to the lamp shade's Renderer
     public Light directionalLight; // Reference to the directional light
-    private int currentColorMode = 0; // Tracks the current color mode (0 = white, 1 = red, 2 = yellow, 3 = blue)
-    private readonly Color[] colorModes = { Color.white, Color.red, Color.yellow, Color.blue };
+
+    private readonly Color[] sectorColors =
+    {
+        new Color(0.9f, 0.9f, 0.9f), // Light Gray
+        new Color(1.0f, 0.6f, 0.6f), // #FF9999 (Light Red)
+        new Color(0.6f, 1.0f, 1.0f), // #99FFFF (Light Blue)
+        new Color(1.0f, 0.8f, 0.6f)  // #FFCC99 (Light Yellow)
+    };
 
     void Awake()
     {
@@ -179,6 +186,9 @@ public class RadialMenuDriver : MonoBehaviour
             radialSector.transform.position = radialMenuCanvas.position;
             radialSector.transform.localEulerAngles = radialSectorEulerAngles;
             radialSector.GetComponent<Image>().fillAmount = 1 / (float)numberOfRadialSectors - (angleBetweenSector / 360);
+
+            // Set sector color
+            radialSector.GetComponent<Image>().color = sectorColors[i];
         }
     }
 
@@ -201,12 +211,10 @@ public class RadialMenuDriver : MonoBehaviour
             {
                 if (i == currentSelectedSectorIndex)
                 {
-                    spawnedSectors[i].GetComponent<Image>().color = Color.yellow;
                     spawnedSectors[i].transform.localScale = 1.1f * Vector3.one;
                 }
                 else
                 {
-                    spawnedSectors[i].GetComponent<Image>().color = Color.white;
                     spawnedSectors[i].transform.localScale = Vector3.one;
                 }
             }
@@ -221,33 +229,19 @@ public class RadialMenuDriver : MonoBehaviour
     {
         onSectorSelection.Invoke(currentSelectedSectorIndex);
 
-        //Logger.Instance.LogInfo("Selected sector index = " + currentSelectedSectorIndex);
-
-        AdjustLight(currentSelectedSectorIndex);
+        AdjustLampShadeColor(currentSelectedSectorIndex);
 
         radialMenuCanvas.gameObject.SetActive(false);
     }
 
-    private void AdjustLight(int sectorIndex)
+    private void AdjustLampShadeColor(int sectorIndex)
     {
-        switch (sectorIndex)
+        if (sectorIndex >= 0 && sectorIndex < sectorColors.Length)
         {
-            case 0: // Top-right: Switch to next color mode
-                currentColorMode = (currentColorMode + 1) % colorModes.Length;
-                directionalLight.color = colorModes[currentColorMode];
-                break;
-            case 1: // Bottom-right: Switch to previous color mode
-                currentColorMode = (currentColorMode - 1 + colorModes.Length) % colorModes.Length;
-                directionalLight.color = colorModes[currentColorMode];
-                break;
-            case 2: // Bottom-left
-                directionalLight.enabled = false;
-                break;
-            case 3: // Top-left: Disable light
-                directionalLight.enabled = true;
-                break;
-            default:
-                break;
+            Color selectedColor = sectorColors[sectorIndex];
+            lampShadeRenderer.material.color = selectedColor; // Update lamp shade color
+            directionalLight.color = selectedColor;           // Update directional light color
+            RenderSettings.ambientLight = selectedColor;      // Update ambient light color
         }
     }
 }

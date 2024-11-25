@@ -358,6 +358,7 @@ MonoBehaviour:
   onSectorSelection:
     m_PersistentCalls:
       m_Calls: []
+  lampShadeRenderer: {fileID: 1141453801}
   directionalLight: {fileID: 715301618}
 --- !u!4 &81855278
 Transform:
@@ -896,6 +897,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.358
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.78046036
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.59086704
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.18375348
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.089400865
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 72.776
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -37.723
+      objectReference: {fileID: 0}
+    - target: {fileID: 922779583229806962, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -15.192
+      objectReference: {fileID: 0}
     - target: {fileID: 7324790547414948496, guid: 300e768077a110f4a995667b7af78fe9, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4966,6 +5007,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1125734649379851867, guid: 740b5ee262c98df4381adba974c8f978, type: 3}
   m_PrefabInstance: {fileID: 1103045393}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1141453801 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1330031084114231581, guid: 142ac07ac204863418a6f3f9b0ac660c, type: 3}
+  m_PrefabInstance: {fileID: 230372370}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1152698658
 GameObject:
