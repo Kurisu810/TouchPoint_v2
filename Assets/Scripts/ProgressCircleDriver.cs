@@ -10,12 +10,23 @@ public class ProgressCircleDriver : MonoBehaviour
     [SerializeField] private float displayDistance = 0.6f; // Distance from interactable
     [SerializeField] private float selectionTime = 1.95f; // Time required for full progress
 
+    [SerializeField, Interface(typeof(IActiveState))]
+    private UnityEngine.Object _pointActiveStateLeft;
+    private IActiveState PointActiveStateLeft;
+
+    [SerializeField, Interface(typeof(IActiveState))]
+    private UnityEngine.Object _pointActiveStateRight;
+    private IActiveState PointActiveStateRight;
+
     private Coroutine fillCoroutine;
     private Vector3 headsetPosition;
     private Vector3 targetPosition;
 
     void Start()
     {
+        PointActiveStateLeft = _pointActiveStateLeft as IActiveState;
+        PointActiveStateRight = _pointActiveStateRight as IActiveState;
+
         if (userCamera == null)
         {
             userCamera = Camera.main;
@@ -30,6 +41,11 @@ public class ProgressCircleDriver : MonoBehaviour
     /// </summary>
     public void OnHoverEnter(GameObject object1)
     {
+        if (!PointActiveStateLeft.Active && !PointActiveStateRight.Active)
+        {
+            return;
+        }
+        
         // Capture the user's headset position
         headsetPosition = userCamera.transform.position;
 
