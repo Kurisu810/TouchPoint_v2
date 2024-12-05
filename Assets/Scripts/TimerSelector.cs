@@ -14,16 +14,36 @@ namespace Oculus.Interaction
         [SerializeField]
         public RayInteractor Interactor;
 
+        [SerializeField, Interface(typeof(IActiveState))]
+        private UnityEngine.Object _pointActiveState;
+        private IActiveState PointActiveState;
+
         public float selectionTime = 2f;  // Time to wait before selecting
         private float timer = 0f;         // Timer
 
         public event Action WhenSelected = delegate { };
         public event Action WhenUnselected = delegate { };
 
+        private bool LastSelected = false;
+
+        void Start()
+        {
+            PointActiveState = _pointActiveState as IActiveState;
+        }
+        void OnEnable()
+        {
+            timer = 0f;
+        }
         void Update()
         {
+            if (LastSelected)
+            {
+                LastSelected = false;
+                WhenUnselected();
+            }
+
             // Check if the interactor is in the hovering state
-            if (Interactor != null && Interactor.State == InteractorState.Hover)
+            else if (Interactor != null && Interactor.State == InteractorState.Hover && PointActiveState.Active)
             {
                 timer += Time.deltaTime; // Start timer
 
@@ -37,7 +57,6 @@ namespace Oculus.Interaction
             {
                 // Reset timer if not hovering
                 timer = 0f;
-                WhenUnselected();
             }
         }
     }

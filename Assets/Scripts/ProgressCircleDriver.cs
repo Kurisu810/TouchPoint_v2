@@ -18,6 +18,9 @@ public class ProgressCircleDriver : MonoBehaviour
     private UnityEngine.Object _pointActiveStateRight;
     private IActiveState PointActiveStateRight;
 
+    public GameObject timerRayInteractorLeft;
+    public GameObject timerRayInteractorRight;
+
     private Coroutine fillCoroutine;
     private Vector3 headsetPosition;
     private Vector3 targetPosition;
@@ -41,29 +44,32 @@ public class ProgressCircleDriver : MonoBehaviour
     /// </summary>
     public void OnHoverEnter(GameObject object1)
     {
-        if (!PointActiveStateLeft.Active && !PointActiveStateRight.Active)
+        if ((timerRayInteractorLeft.activeSelf && PointActiveStateLeft.Active) ^ (timerRayInteractorRight.activeSelf && PointActiveStateRight.Active))
         {
+            // Capture the user's headset position
+            headsetPosition = userCamera.transform.position;
+
+            // Calculate the target position for the circle UI element
+            // Target position is a set distance away from the center of the interactable
+            // and always facing the camera
+            Vector3 interactableCenter = object1.transform.position;
+            Vector3 interactionVector = (headsetPosition - interactableCenter).normalized;    
+            targetPosition = interactableCenter + interactionVector * displayDistance;
+
+            // Position and orient the circle UI
+            circleUI.position = targetPosition;
+            circleUI.LookAt(userCamera.transform);
+            circleUI.rotation = Quaternion.Euler(0f, circleUI.rotation.eulerAngles.y + 180f, 0f);
+
+            // Show the circle UI and start the fill coroutine
+            circleUI.gameObject.SetActive(true);
+            fillCoroutine = StartCoroutine(FillCircle());
+        }
+        else
+        {
+            OnHoverExit();
             return;
         }
-        
-        // Capture the user's headset position
-        headsetPosition = userCamera.transform.position;
-
-        // Calculate the target position for the circle UI element
-        // Target position is a set distance away from the center of the interactable
-        // and always facing the camera
-        Vector3 interactableCenter = object1.transform.position;
-        Vector3 interactionVector = (headsetPosition - interactableCenter).normalized;    
-        targetPosition = interactableCenter + interactionVector * displayDistance;
-
-        // Position and orient the circle UI
-        circleUI.position = targetPosition;
-        circleUI.LookAt(userCamera.transform);
-        circleUI.rotation = Quaternion.Euler(0f, circleUI.rotation.eulerAngles.y + 180f, 0f);
-
-        // Show the circle UI and start the fill coroutine
-        circleUI.gameObject.SetActive(true);
-        fillCoroutine = StartCoroutine(FillCircle());
     }
 
     /// <summary>

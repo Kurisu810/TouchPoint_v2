@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactor: {fileID: 1254329111}
+  _pointActiveState: {fileID: 0}
   selectionTime: 2
 --- !u!114 &429521133 stripped
 MonoBehaviour:
@@ -620,6 +621,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 457275874}
+  - component: {fileID: 457275875}
+  - component: {fileID: 457275876}
   m_Layer: 0
   m_Name: Poses
   m_TagString: Untagged
@@ -644,6 +647,54 @@ Transform:
   - {fileID: 1613839060}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &457275875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457275873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebd5da9a8bd22243b407f1927f4965b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeStates:
+  - {fileID: 1624763895}
+  - {fileID: 499474760}
+  _logicOperator: 1
+--- !u!114 &457275876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457275873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2705674196dfc4da9c25fbacda72d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeState: {fileID: 457275875}
+  _whenActivated:
+    m_PersistentCalls:
+      m_Calls: []
+  _whenDeactivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702486096}
+        m_TargetAssemblyTypeName: ProgressCircleDriver, Assembly-CSharp
+        m_MethodName: OnHoverExit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _emitOnFirstUpdate: 1
 --- !u!4 &485162198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9095418373231221361, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
@@ -699,48 +750,8 @@ MonoBehaviour:
   _whenActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1152698660}
-        m_TargetAssemblyTypeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.RayInteractor,
-          Oculus.Interaction
-        m_MethodName: Enable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 0
-      - m_Target: {fileID: 1323895772}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 978378350}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 0
-  _whenDeactivated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1152698660}
-        m_TargetAssemblyTypeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.RayInteractor,
+      - m_Target: {fileID: 1774024737}
+        m_TargetAssemblyTypeName: Oculus.Interaction.Interactor`2[[Oculus.Interaction.RayInteractor,
           Oculus.Interaction
         m_MethodName: Disable
         m_Mode: 1
@@ -750,8 +761,48 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1323895772}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1996593133}
+        m_TargetAssemblyTypeName: Logger, Assembly-CSharp
+        m_MethodName: LogInfo
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: activated
+          m_BoolArgument: 1
         m_CallState: 0
+  _whenDeactivated:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1774024737}
+        m_TargetAssemblyTypeName: Oculus.Interaction.Interactor`2[[Oculus.Interaction.RayInteractor,
+          Oculus.Interaction
+        m_MethodName: Enable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1323895772}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -764,16 +815,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 978378350}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1996593133}
+        m_TargetAssemblyTypeName: Logger, Assembly-CSharp
+        m_MethodName: LogInfo
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: deactivated
           m_BoolArgument: 0
         m_CallState: 0
   _emitOnFirstUpdate: 1
@@ -4022,6 +4073,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactor: {fileID: 22319996}
+  _pointActiveState: {fileID: 499474760}
   selectionTime: 1
 --- !u!1 &822717877
 GameObject:
@@ -4120,8 +4172,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactorFilters: []
-  _maxInteractors: -1
-  _maxSelectingInteractors: -1
+  _maxInteractors: 1
+  _maxSelectingInteractors: 1
   _data: {fileID: 0}
   _pointableElement: {fileID: 0}
   _surface: {fileID: 822717881}
@@ -4215,7 +4267,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   _whenUnhover:
     m_PersistentCalls:
       m_Calls:
@@ -4242,7 +4294,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
@@ -5460,6 +5512,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactor: {fileID: 1785119095}
+  _pointActiveState: {fileID: 1624763895}
   selectionTime: 1
 --- !u!1001 &1225904976
 PrefabInstance:
@@ -5745,6 +5798,20 @@ MonoBehaviour:
   - Lamp
   - Speaker
   _excludeTags: []
+--- !u!114 &1323895787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323895772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a56054f6e3838f4e85dce4e71979800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactor: {fileID: 22319996}
+  _property: 32
 --- !u!4 &1335429713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2483171112402213428, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
@@ -5888,6 +5955,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2483171112401766342, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1354644692}
+    - targetCorrespondingSourceObject: {fileID: 238424321818482630, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1693676983}
     - targetCorrespondingSourceObject: {fileID: 1248127056091543881, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1816729183}
@@ -5900,6 +5970,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7843117841878813235, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1785119109}
+    - targetCorrespondingSourceObject: {fileID: 7843117841878813235, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1785119110}
     - targetCorrespondingSourceObject: {fileID: 9080986333836592384, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1213857319}
@@ -5915,6 +5988,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7843117840881995355, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1323895786}
+    - targetCorrespondingSourceObject: {fileID: 7843117840881995355, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1323895787}
     - targetCorrespondingSourceObject: {fileID: 9080986334859493736, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 790792479}
@@ -6242,9 +6318,9 @@ Transform:
   m_GameObject: {fileID: 1440874223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00003482915}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 6.9071712, y: 3.4535856, z: 3.4535856}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: -1.8911e-11, y: 2.13, z: 0.00000028068}
+  m_LocalScale: {x: 5.976854, y: 7.8422303, z: 2.988427}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1406451000}
   m_Father: {fileID: 2125729399}
@@ -6307,8 +6383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactorFilters: []
-  _maxInteractors: -1
-  _maxSelectingInteractors: -1
+  _maxInteractors: 1
+  _maxSelectingInteractors: 1
   _data: {fileID: 0}
   _pointableElement: {fileID: 0}
   _surface: {fileID: 1440874227}
@@ -6402,7 +6478,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   _whenUnhover:
     m_PersistentCalls:
       m_Calls:
@@ -6429,7 +6505,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
   _whenSelect:
     m_PersistentCalls:
       m_Calls:
@@ -6686,10 +6762,10 @@ MonoBehaviour:
   _whenActivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1152698660}
-        m_TargetAssemblyTypeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.RayInteractor,
+      - m_Target: {fileID: 1254329111}
+        m_TargetAssemblyTypeName: Oculus.Interaction.Interactor`2[[Oculus.Interaction.RayInteractor,
           Oculus.Interaction
-        m_MethodName: Enable
+        m_MethodName: Disable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6697,8 +6773,8 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 0
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 407514393}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -6726,10 +6802,10 @@ MonoBehaviour:
   _whenDeactivated:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1152698660}
-        m_TargetAssemblyTypeName: Oculus.Interaction.Interactable`2[[Oculus.Interaction.RayInteractor,
+      - m_Target: {fileID: 1254329111}
+        m_TargetAssemblyTypeName: Oculus.Interaction.Interactor`2[[Oculus.Interaction.RayInteractor,
           Oculus.Interaction
-        m_MethodName: Disable
+        m_MethodName: Enable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6738,7 +6814,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 0
+        m_CallState: 2
       - m_Target: {fileID: 407514393}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -6793,6 +6869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Interactor: {fileID: 1774024737}
+  _pointActiveState: {fileID: 0}
   selectionTime: 2
 --- !u!1 &1637271236
 GameObject:
@@ -6869,6 +6946,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637271236}
   m_CullTransparentMesh: 1
+--- !u!1 &1693676981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 238424321818482630, guid: 287c11e713219d84ab2e3cbb56965d5b, type: 3}
+  m_PrefabInstance: {fileID: 1354644688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1693676983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693676981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aebd5da9a8bd22243b407f1927f4965b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeStates:
+  - {fileID: 1785119110}
+  - {fileID: 1323895787}
+  _logicOperator: 1
 --- !u!1 &1693822024
 GameObject:
   m_ObjectHideFlags: 0
@@ -7024,6 +7122,8 @@ MonoBehaviour:
   selectionTime: 0.95
   _pointActiveStateLeft: {fileID: 1624763895}
   _pointActiveStateRight: {fileID: 499474760}
+  timerRayInteractorLeft: {fileID: 407514393}
+  timerRayInteractorRight: {fileID: 1323895772}
 --- !u!4 &1774024736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8030197382645210610, guid: d27ac1ffd4cdd7c40a39dcfa6012355c, type: 3}
@@ -7168,6 +7268,20 @@ MonoBehaviour:
   - Speaker
   - Lamp
   _excludeTags: []
+--- !u!114 &1785119110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407514393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a56054f6e3838f4e85dce4e71979800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactor: {fileID: 1785119095}
+  _property: 32
 --- !u!1 &1803223835
 GameObject:
   m_ObjectHideFlags: 0
